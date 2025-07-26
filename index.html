@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>同户验证专用，售后微信gxs633</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        #emailInput {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        #generateBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #message {
+            margin-top: 20px;
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>同户验证专用，售后微信gxs633</h2>
+        <input type="email" id="emailInput" placeholder="请输入你的账号邮箱" required>
+        <button id="generateBtn">点击验证</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        // 固定链接前缀（根据你的需求，此部分不可修改）
+        const BASE_URL = "https://b2u.me/2U8sAxD/";
+
+        // 获取DOM元素
+        const emailInput = document.getElementById('emailInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const message = document.getElementById('message');
+
+        // 点击按钮触发生成和跳转
+        generateBtn.addEventListener('click', () => {
+            const email = emailInput.value.trim(); // 获取输入的邮箱并去除空格
+            message.textContent = ''; // 清空之前的提示
+
+            // 验证邮箱格式
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                message.textContent = "请输入邮箱地址";
+                return;
+            }
+            if (!emailRegex.test(email)) {
+                message.textContent = "请输入有效的邮箱格式（如xxx@xxx.com）";
+                return;
+            }
+
+            // 生成目标链接（前缀 + 邮箱）
+            const targetUrl = BASE_URL + email;
+
+            // 跳转到生成的链接
+            window.location.href = targetUrl;
+        });
+
+        // 支持按回车键提交
+        emailInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                generateBtn.click(); // 触发按钮点击事件
+            }
+        });
+    </script>
+</body>
+</html>
